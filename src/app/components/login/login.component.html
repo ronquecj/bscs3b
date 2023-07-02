@@ -1,0 +1,51 @@
+<h1>Name: {{ name }}</h1>
+<h1>Age: {{ age }}</h1>
+<h1>Movies: {{ arrMovies }}</h1>
+
+<ul>
+  <li *ngFor="let m of arrMovies">{{ m }}</li>
+</ul>
+
+<table border="1">
+  <thead>
+    <th>#</th>
+    <th>Title</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of arrMovies; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ movie }}</td>
+      <td><button type="button">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+<br />
+
+<button type="button" (click)="toggleTable()">
+  {{ btnLabel }}
+</button>
+
+<br />
+<br />
+
+<table border="1" *ngIf="!isHidden">
+  <thead>
+    <th>#</th>
+    <th>Title</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of objMovies; let i = index">
+      <td [style]="m.vstyle">{{ i + 1 }}</td>
+      <td [style]="m.vstyle">{{ m.title }}</td>
+      <td [style]="m.vstyle">{{ m.genre }}</td>
+      <td [style]="m.vstyle">
+        <button type="button">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div>{{ myString }}</div>
+<input type="text" [(ngModel)]="myString"/>
